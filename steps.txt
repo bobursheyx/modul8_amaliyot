@@ -1,0 +1,9 @@
+Virtual muhit yaratish
+>>> python -m venv .venv
+
+Virtual muhitni aktivlashtirish
+>>> source .venv/bin/activate
+>>> .venv\Scripts\activate
+
+Django ni muhitga o'rnatish
+>>> pip install django
