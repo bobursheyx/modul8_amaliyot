@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-
+from django.core.mail import send_mail
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -42,6 +42,13 @@ def register_user(request):
                 first_name=first_name,
                 last_name=last_name,
                 email=email,
+            )
+            send_mail(
+                subject="thanks for registering",
+                message=f"Dear {request.first_name}\n We congratulate that you registered our website",
+                from_email="olponovboburjon2@gmail.com",
+                recipient_list=[request.user.email,],
+                fail_silently=False
             )
             user.set_password(password2)
             user.save()
